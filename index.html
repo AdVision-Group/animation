@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            #video {
+                width: 100vw;
+                height: 100vh;
+                object-fit: cover;
+            }
+
+            #app {
+                display: none;
+                align-items: center;
+                justify-content: center;
+
+                width: 100vw;
+                height: 100vh;
+
+                background-color: white;
+
+                opacity: 1;
+                transition: all 1000ms;
+            }
+
+            #logo {
+                height: 100px;
+
+                opacity: 0;
+                transition: all 1000ms;
+            }
+
+            #body {
+                display: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <video id="video" class="video" autoplay muted>
+            <source src="video.mp4" type="video/mp4">
+        </video>
+
+        <div id="app">
+            <img id="logo" src="logo.png" />
+
+            <div id="body">
+                <div id="class">
+                    <img class="logo" src="logo.png" />
+                    <div style="flex: 1;"></div>
+                    <div class="menu">
+                        <div class="link">Domov</div>
+                        <div class="link">Služby</div>
+                        <div class="link">Produkty</div>
+                        <div class="link">Projekty</div>
+                        <div class="link">Výskum</div>
+                        <div class="link">Kontakt</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.getElementById("video").addEventListener("ended", videoEnded, false);
+
+            function videoEnded(e) {
+                document.getElementById("video").style.display = "none";
+                document.getElementById("app").style.display = "flex";
+                setTimeout(function() {
+                    document.getElementById("logo").style.opacity = "1";
+                }, 100);
+
+                setTimeout(function() {
+                    document.getElementById("app").style.opacity = "0";
+                }, 2000);
+            }
+        </script>
+    </body>
+</html>
